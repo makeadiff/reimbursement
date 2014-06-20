@@ -5,6 +5,12 @@
 
 }
 
+@media screen and (max-width: 568px) {
+    h1.title {
+        font-size:100%;
+    }
+}
+
 h1.title
 {
     font-family: 'Oswald',sans-serif;
