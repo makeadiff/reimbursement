@@ -1,0 +1,79 @@
+.centered
+{
+
+    text-align: center;
+
+}
+
+h1.title
+{
+    font-family: 'Oswald',sans-serif;
+    color:#ffffff;
+    text-transform: uppercase;
+    font-size: 400%;
+}
+
+h2.sub-title
+{
+    font-family: 'Oswald',sans-serif;
+    color:#ffffff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+h4.sub-title
+{
+    font-family: 'Oswald',sans-serif;
+    color:#ffffff;
+    text-transform: uppercase;
+
+
+}
+
+p.success
+{
+    font-family: sans-serif;
+    color:#ffffff;
+    font-size : 120%;
+}
+
+.transparent
+{
+    background-color: Transparent;
+}
+
+.form-control
+{
+
+
+}
+
+table.status
+{
+    color:#ffffff;
+}
+
+div.oneTravelDetail
+{
+    margin-bottom: 10px;
+}
+
+div.pin
+{
+   /* background-color:rgba(255,255,255,0.1);*/
+
+    padding:20px;
+
+    /*margin-left: 50px;
+    margin-right: 50px;*/
+}
+
+label
+{
+    color: #ffffff;
+}
+
+div.board
+{
+    margin:30px;
+}
