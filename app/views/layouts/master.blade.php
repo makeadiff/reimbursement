@@ -19,7 +19,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 @section('navbar-header')
-                <a class="navbar-brand" href="">Reimbursement</a>
+                <a class="navbar-brand" href="http://localhost/makeadiff.in/home/makeadiff/public_html/madapp/index.php/common_dashboard/dashboard_view">MADApp</a>
                 @show
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-1">

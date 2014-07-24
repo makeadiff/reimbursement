@@ -62,11 +62,37 @@ class Reimbursement extends BaseController
     public function getUserData()
     {
         $row_user = DB::connection('makeadiff_madapp')->select('SELECT id, name, email, city_id FROM User WHERE id = ?',array($_SESSION['user_id']));
+
+
         if (!empty($row_user[0])) {
             $user = $row_user[0];
             $row_city = DB::connection('makeadiff_madapp')->select('SELECT id, name FROM City WHERE id = ?', array($user->city_id));
+            $row_vertical = DB::connection('makeadiff_madapp')->select('SELECT `Group`.type, Vertical.name as vertical_name FROM Vertical
+                                                                            INNER JOIN `Group`
+                                                                            ON `Group`.vertical_id = Vertical.id
+                                                                            INNER JOIN UserGroup
+                                                                            ON UserGroup.group_id = `Group`.id
+                                                                            INNER JOIN `User`
+                                                                            ON `User`.id = UserGroup.user_id
+                                                                            WHERE `User`.id = ? AND Group.type <> ?',array($user->id,'volunteer'));
+
+            if(empty($row_vertical[0])) {
+                return Redirect::to('error')->with('message','You have not been assigned a vertical. Please contact your HR to ensure that your vertical in MADApp has been marked correctly.');
+            }
+
+            foreach ($row_vertical as $vertical) {
+                if ($vertical->type == 'national') {
+                    $user->vertical = "National";
+                    break;
+                }
+
+                if ($vertical->type == 'fellow') {
+                    $user->vertical = $vertical->vertical_name;
+
+                }
+            }
             $user->city_name = $row_city[0]->name;
-            $user->vertical = 'Finance';
+
             return $user;
         } else {
             return false;
@@ -181,7 +207,7 @@ class Reimbursement extends BaseController
             return Redirect::to('success')->with('id',$result[0]->Name)->with('email',$user->email);
 
         } else {
-            return Redirect::to('error');
+            return Redirect::to('error')->with('message','Something went wrong. Please try again after sometime.');
         }
 
 
@@ -263,7 +289,6 @@ class Reimbursement extends BaseController
 
         $sObject->type = 'Reimbursement__c';
 
-
         $response_r = $client->create(array($sObject),'Reimbursement');
 
         if($response_r[0]->success == true){
@@ -299,7 +324,7 @@ class Reimbursement extends BaseController
             return Redirect::to('success')->with('id',$result[0]->Name)->with('email',$user->email);
 
         } else {
-            return Redirect::to('error');
+            return Redirect::to('error')-with('message','Something went wrong. Please try again after sometime.');
         }
     }
 

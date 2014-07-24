@@ -18,7 +18,9 @@
         <h1 class="title">Oops!</h1>
         <br>
         <div class="row">
-            <p class="success">Something went wrong. Please try again after sometime.</p>
+            <p class="success">
+            {{{ Session::get('message')}}}
+            </p>
         </div>
         <br>
         <div class="row">
