@@ -35,6 +35,12 @@ class Reimbursement extends BaseController
 
 	public function showHome()
 	{
+        $data = $this->getUserData();
+
+        if ($data->error == true) {
+            return View::make('home')->with('message',$data->message);
+        }
+
         return View::make('home');
 	}
 
@@ -59,10 +65,46 @@ class Reimbursement extends BaseController
         return View::make('status',$data);
     }
 
+    public function getBankDetails()
+    {
+        $row_user = DB::connection('makeadiff_madapp')->select('SELECT id, name, email, city_id FROM User WHERE id = ?',array($_SESSION['user_id']));
+
+        if (empty($row_user[0])) {
+
+            return Redirect::to('error')->with('message','Something went wrong. Please try again after sometime. ("Technical" Error : Something is messing with the session data)');
+
+        } else {
+
+            $bank_name = DB::connection('makeadiff_madapp')->select('SELECT data FROM UserData WHERE user_id = ? AND name = ?',array($_SESSION['user_id'],'bank_name'));
+            $bank_address = DB::connection('makeadiff_madapp')->select('SELECT data FROM UserData WHERE user_id = ? AND name = ?',array($_SESSION['user_id'],'bank_address'));
+            $bank_account_number = DB::connection('makeadiff_madapp')->select('SELECT data FROM UserData WHERE user_id = ? AND name = ?',array($_SESSION['user_id'],'bank_account_number'));
+            $bank_ifsc_code = DB::connection('makeadiff_madapp')->select('SELECT data FROM UserData WHERE user_id = ? AND name = ?',array($_SESSION['user_id'],'bank_ifsc_code'));
+            $bank_account_type = DB::connection('makeadiff_madapp')->select('SELECT data FROM UserData WHERE user_id = ? AND name = ?',array($_SESSION['user_id'],'bank_account_type'));
+
+            $data['error'] = false;
+
+            if (empty($bank_name[0]->data) || empty($bank_address[0]->data) || empty($bank_account_number[0]->data) || empty($bank_ifsc_code[0]->data) || empty($bank_account_type[0]->data)) {
+
+                $data['message'] = 'Your bank details have not been filled. Click <a href="http://makeadiff.in/madapp/index.php/user/edit_profile">here</a> to enter the details';
+                $data['error'] = true;
+                return $data;
+            } else{
+
+                $data = compact("bank_name", "bank_address", "bank_account_number", "bank_ifsc_code", "bank_account_type");
+                $data['error'] = false;
+                return $data;
+
+            }
+        }
+
+
+    }
+
     public function getUserData()
     {
         $row_user = DB::connection('makeadiff_madapp')->select('SELECT id, name, email, city_id FROM User WHERE id = ?',array($_SESSION['user_id']));
 
+        $data['error'] = false;
 
         if (!empty($row_user[0])) {
             $user = $row_user[0];
@@ -75,9 +117,11 @@ class Reimbursement extends BaseController
                                                                             INNER JOIN `User`
                                                                             ON `User`.id = UserGroup.user_id
                                                                             WHERE `User`.id = ? AND Group.type <> ?',array($user->id,'volunteer'));
-
             if(empty($row_vertical[0])) {
-                return Redirect::to('error')->with('message','You have not been assigned a vertical. Please contact your HR to ensure that your vertical in MADApp has been marked correctly.');
+                $data = new stdClass();
+                $data->message = 'You have not been assigned a vertical. Please contact your HR to ensure that your vertical in MADApp has been marked correctly.';
+                $data->error = true;
+                return $data;
             }
 
             foreach ($row_vertical as $vertical) {
@@ -93,9 +137,32 @@ class Reimbursement extends BaseController
             }
             $user->city_name = $row_city[0]->name;
 
+            $bank_details = $this->getBankDetails();
+
+            if($bank_details['error'] == true) {
+
+                $data = new stdClass();
+                $data->error = true;
+                $data->message = $bank_details['message'];
+                return $data;
+            }
+
+
+            $user->bank_name = $bank_details['bank_name'][0]->data;
+            $user->bank_address = $bank_details['bank_address'][0]->data;
+            $user->bank_account_number = $bank_details['bank_account_number'][0]->data;
+            $user->bank_ifsc_code = $bank_details['bank_ifsc_code'][0]->data;
+            $user->bank_account_type = $bank_details['bank_account_type'][0]->data;
+            $user->error = false;
+
+
             return $user;
         } else {
-            return false;
+
+            $data = new stdClass();
+            $data->message = 'Something went wrong. Please try again after sometime. ("Technical" Error : Something is messing with the session data)';
+            $data->error = true;
+            return $data;
         }
 
 
@@ -159,7 +226,25 @@ class Reimbursement extends BaseController
 
         $user = $this->getUserData();
 
+        if ($user->error == true) {
+            return Redirect::to('error')->with('message',$user->message);
+        }
+
         $client = $this->getClient();
+
+        $query = "SELECT Id,Name,Requester_ID__c,Type__c,Status__c,Telephone_Internet_Month__c FROM Reimbursement__c";
+        $result = $client->query($query);
+
+        foreach ($result as $record) {
+            if($record->fields->Requester_ID__c == $user->id && ($record->fields->Status__c == 'Created' || $record->fields->Status__c == 'Approved') &&
+                $record->fields->Type__c == 'Telephone/Internet' && $record->fields->Telephone_Internet_Month__c == Input::get('monthSelect')) {
+
+                  return Redirect::to('error')->with('message','You have already submitted a telephone/internet reimbursement request for ' . Input::get('monthSelect'));
+
+            }
+        }
+
+
 
         $sObject = new stdClass();
         $sObject->fields = array(
@@ -172,8 +257,11 @@ class Reimbursement extends BaseController
             'Requester_Email__c' => $user->email,
             'Requester_City__c' => $user->city_name,
             'Requester_Vertical__c' => $user->vertical,
-
-
+            'Bank_Name__c' => $user->bank_name,
+            'Bank_Address__c' => $user->bank_address,
+            'Bene_Account_Number__c' => $user->bank_account_number,
+            'Receiver_IFSC__c' => $user->bank_ifsc_code,
+            //'Receiver_A_c_type__c' => $user->bank_account_type,
         );
         $sObject->type = 'Reimbursement__c';
 
@@ -230,6 +318,10 @@ class Reimbursement extends BaseController
 
 
         $user = $this->getUserData();
+
+        if ($user->error == true) {
+            return Redirect::to('error')->with('message',$user->message);
+        }
 
         $client = $this->getClient();
 

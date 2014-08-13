@@ -17,8 +17,8 @@ Route::filter('login_check',function()
    session_start();
 
    if(empty($_SESSION['user_id'])){
-       return Redirect::to('http://makeadiff.in/madapp/index.php/auth/login/' . base64_encode(Request::url()));
-       //return Redirect::to('http://localhost/makeadiff.in/home/makeadiff/public_html/apps/set_session_test.php?url=' . base64_encode(Request::url()));
+       //return Redirect::to('http://makeadiff.in/madapp/index.php/auth/login/' . base64_encode(Request::url()));
+       return Redirect::to('http://localhost/makeadiff.in/home/makeadiff/public_html/apps/set_session_test.php?url=' . base64_encode(Request::url()));
    }
 
 

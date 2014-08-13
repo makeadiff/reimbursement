@@ -19,7 +19,7 @@
         <br>
         <div class="row">
             <p class="success">
-            {{{ Session::get('message')}}}
+            {{ Session::get('message')}}
             </p>
         </div>
         <br>
