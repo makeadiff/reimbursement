@@ -85,7 +85,7 @@ class Reimbursement extends BaseController
 
             if (empty($bank_name[0]->data) || empty($bank_address[0]->data) || empty($bank_account_number[0]->data) || empty($bank_ifsc_code[0]->data) || empty($bank_account_type[0]->data)) {
 
-                $data['message'] = 'Your bank details have not been filled. Click <a href="http://makeadiff.in/madapp/index.php/user/edit_profile">here</a> to enter the details';
+                $data['message'] = 'Your bank details have not been filled. Click <a href="http://makeadiff.in/madapp/index.php/user/edit_bank_details">here</a> to enter the details';
                 $data['error'] = true;
                 return $data;
             } else{
