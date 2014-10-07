@@ -6,14 +6,14 @@
 @stop
 
 @section('navbar-links')
-    <li><a href="" class="active">Telephone/Internet</a></li>
+    <li><a href="" class="active">Monthly</a></li>
     <li><a href="./travel">Travel</a></li>
     <li><a href="./status">Status</a></li>
 @stop
 
     <div class="board">
     <div class="pin">
-    <h2 class="sub-title">Telephone/Internet Reimbursement</h2>
+    <h2 class="sub-title">Monthly Reimbursement</h2>
     <br>
     <div class="row">
         <div class="form-group col-md-4 col-md-offset-4 col-sm-12">
@@ -36,19 +36,7 @@
 
         <h4 class="sub-title">Month</h4>
         <select id="monthSelect" class="form-control" placeholder="Mode" name="monthSelect">
-            <option>January</option>
-            <option>February</option>
-            <option>March</option>
-            <option>April</option>
-            <option>May</option>
             <option>June</option>
-            <option>July</option>
-            <option>August</option>
-            <option>September</option>
-            <option>October</option>
-            <option>November</option>
-            <option>December</option>
-
         </select>
         </div></div>
           <div class="row"><div class="form-group col-md-4 col-md-offset-4 col-sm-12">

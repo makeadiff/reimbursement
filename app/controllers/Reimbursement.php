@@ -134,7 +134,7 @@ class Reimbursement extends BaseController
                     $user->vertical = $vertical->vertical_name;
 
                 }
-                
+
 
             }
             $user->city_name = $row_city[0]->name;

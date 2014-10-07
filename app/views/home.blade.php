@@ -22,7 +22,7 @@
             @endif
 
             <div class="row">
-                <a href='telephone-internet' class='btn btn-primary btn-lg transparent'>Telephone/Internet</a>
+                <a href='telephone-internet' class='btn btn-primary btn-lg transparent'>Monthly</a>
             </div>
             <br>
             <div class="row">
