@@ -130,10 +130,12 @@ class Reimbursement extends BaseController
                     break;
                 }
 
-                if ($vertical->type == 'fellow') {
+                if ($vertical->type == 'fellow' || $vertical->type == 'strat') {
                     $user->vertical = $vertical->vertical_name;
 
                 }
+                
+
             }
             $user->city_name = $row_city[0]->name;
 
