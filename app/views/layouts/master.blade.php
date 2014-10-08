@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <script src="js/jquery-1.9.0.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/uservoice.js"></script>
         @yield('head')
     </head>
 
