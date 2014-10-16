@@ -253,7 +253,7 @@ class Reimbursement extends BaseController
             'Type__c' => 'Telephone/Internet',
             'Telephone_Internet_Month__c' => Input::get('monthSelect'),
             'Telephone_Internet_Amount__c' => $amount,
-            'Telephone_Internet_Comment__c' => Input::get('comments'),
+            'Telephone_Internet_Comment__c' => htmlspecialchars(Input::get('comments')),
             'Requester_ID__c' => $user->id,
             'Requester_Name__c' => $user->name,
             'Requester_Email__c' => $user->email,
