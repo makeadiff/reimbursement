@@ -26,7 +26,7 @@ Route::filter('login_check',function()
 
 Route::filter('reimbursement_active',function()
     {
-        return Redirect::to('/error')->with('message','Reimbursements for the month of July are currently being processed nationally. You can apply for reimbursements once it has been closed.');
+        return Redirect::to('/error')->with('message','Reimbursements for the month of August are currently being processed nationally. You can apply for reimbursements once it has been closed.');
 
     });
 
@@ -34,7 +34,7 @@ Route::filter('reimbursement_active',function()
 Route::group(array('before'=>'login_check'),function()
 {
     Route::get('/', 'Reimbursement@showHome');
-    Route::get('/telephone-internet',array('uses' => 'Reimbursement@showTelephoneInternet'));
+    Route::get('/telephone-internet',array('uses' => 'Reimbursement@showTelephoneInternet','before' => 'reimbursement_active'));
     Route::get('/travel','Reimbursement@showTravel');
     Route::get('/success','Reimbursement@showSuccess');
     Route::get('/error','Reimbursement@showError');
