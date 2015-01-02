@@ -34,7 +34,7 @@ Route::filter('reimbursement_active',function()
 Route::group(array('before'=>'login_check'),function()
 {
     Route::get('/', 'Reimbursement@showHome');
-    Route::get('/telephone-internet',array('uses' => 'Reimbursement@showTelephoneInternet','before' => 'reimbursement_active'));
+    Route::get('/telephone-internet',array('uses' => 'Reimbursement@showTelephoneInternet','before' => ''));
     Route::get('/travel','Reimbursement@showTravel');
     Route::get('/success','Reimbursement@showSuccess');
     Route::get('/error','Reimbursement@showError');
