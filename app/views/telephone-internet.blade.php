@@ -36,7 +36,7 @@
 
         <h4 class="sub-title">Month</h4>
         <select id="monthSelect" class="form-control" placeholder="Mode" name="monthSelect">
-            <option>February</option>
+            <option>March</option>
         </select>
         </div></div>
           <div class="row"><div class="form-group col-md-4 col-md-offset-4 col-sm-12">
