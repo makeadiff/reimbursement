@@ -19,28 +19,31 @@
         <div class="table-responsive">
             <table class="table table-bordered status">
                 <tr>
-                    <th>Id</th><th>Type</th><th>Amount</th><th>Status</th>
+                    <th>Id</th><th>Type</th><th>Amount</th><th>Date</th><th>Status</th>
                 </tr>
                 @foreach($rows as $row)
                     <tr>
                         <td>
-                            {{{$row->Id}}}
+                            {{$row->Id}}
                         </td>
                         <td>
-                            {{{$row->Type}}}
+                            {{$row->Type}}
                         </td>
                         <td>
                             @if($row->Type == "Telephone/Internet")
-                                {{{$row->Telephone_Internet_Amount}}}
+                                {{$row->Telephone_Internet_Amount}}
                             @else
-                                {{{$row->Travel_Amount}}}
+                                {{$row->Travel_Amount}}
                             @endif
+                        </td>
+                        <td>
+                            {{$row->Telephone_Internet_Month}}, {{$row->Telephone_Internet_Year}}
                         </td>
                         <td>
                             @if($row->Status == 'Created')
                                 Pending Approval
                             @else
-                                {{{$row->Status}}}
+                                {{$row->Status}}
                             @endif
                         </td>
                     </tr>

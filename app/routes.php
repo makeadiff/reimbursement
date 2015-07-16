@@ -16,10 +16,14 @@ Route::filter('login_check',function()
 {
    session_start();
 
-   if(empty($_SESSION['user_id'])){
-      return Redirect::to('http://makeadiff.in/madapp/index.php/auth/login/' . base64_encode(Request::url()));
-      //return Redirect::to('http://localhost/makeadiff.in/home/makeadiff/public_html/apps/set_session_test.php?url=' . base64_encode(Request::url()));
-   }
+    if(empty($_SESSION['user_id'])){
+
+        if(App::environment('local'))
+            return Redirect::to('http://localhost/makeadiff.in/home/makeadiff/public_html/madapp/index.php/auth/login/' . base64_encode(Request::url()));
+        else
+            return Redirect::to('http://makeadiff.in/madapp/index.php/auth/login/' . base64_encode(Request::url()));
+
+    }
 
 
 });
@@ -41,6 +45,7 @@ Route::group(array('before'=>'login_check'),function()
     Route::get('/status','Reimbursement@showStatus');
     Route::post('/submit/telephone-internet','Reimbursement@submitTelephoneInternet');
     Route::post('/submit/travel','Reimbursement@submitTravel');
+    Route::get('/logout','CommonController@logout');
 });
 
 

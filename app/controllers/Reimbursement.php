@@ -180,7 +180,7 @@ class Reimbursement extends BaseController
     function getStatus()
     {
         $client = $this->getClient();
-        $query = "SELECT Id,Name,Requester_ID__c,Type__c,Status__c,Telephone_Internet_Amount__c,Travel_Total_Amount__c FROM Reimbursement__c";
+        $query = "SELECT Id,Name,Requester_ID__c,Type__c,Status__c,Telephone_Internet_Amount__c,Travel_Total_Amount__c,Telephone_Internet_Year__c,Telephone_Internet_Month__c FROM Reimbursement__c";
         $result = $client->query($query);
 
         $i=0;
@@ -194,6 +194,8 @@ class Reimbursement extends BaseController
                 $row[$i]->Type = $record->fields->Type__c;
                 $row[$i]->Status = $record->fields->Status__c;
                 $row[$i]->Telephone_Internet_Amount = $record->fields->Telephone_Internet_Amount__c;
+                $row[$i]->Telephone_Internet_Month = $record->fields->Telephone_Internet_Month__c;
+                $row[$i]->Telephone_Internet_Year = $record->fields->Telephone_Internet_Year__c;
                 $row[$i]->Travel_Amount = $record->fields->Travel_Total_Amount__c;
                 $i++;
             }
@@ -234,14 +236,14 @@ class Reimbursement extends BaseController
 
         $client = $this->getClient();
 
-        $query = "SELECT Id,Name,Requester_ID__c,Type__c,Status__c,Telephone_Internet_Month__c FROM Reimbursement__c";
+        $query = "SELECT Id,Name,Requester_ID__c,Type__c,Status__c,Telephone_Internet_Month__c,Telephone_Internet_Year__c FROM Reimbursement__c";
         $result = $client->query($query);
 
         foreach ($result as $record) {
             if($record->fields->Requester_ID__c == $user->id && ($record->fields->Status__c == 'Created' || $record->fields->Status__c == 'Approved') &&
-                $record->fields->Type__c == 'Telephone/Internet' && $record->fields->Telephone_Internet_Month__c == Input::get('monthSelect')) {
+                $record->fields->Type__c == 'Telephone/Internet' && $record->fields->Telephone_Internet_Month__c == Input::get('monthSelect') && $record->fields->Telephone_Internet_Year__c == Input::get('yearSelect')) {
 
-                  return Redirect::to('error')->with('message','You have already submitted a telephone/internet reimbursement request for ' . Input::get('monthSelect'));
+                  return Redirect::to('error')->with('message','You have already submitted a telephone/internet reimbursement request for ' . Input::get('monthSelect') . "," . Input::get('yearSelect'));
 
             }
         }
@@ -252,6 +254,7 @@ class Reimbursement extends BaseController
         $sObject->fields = array(
             'Type__c' => 'Telephone/Internet',
             'Telephone_Internet_Month__c' => Input::get('monthSelect'),
+            'Telephone_Internet_Year__c' => Input::get('yearSelect'),
             'Telephone_Internet_Amount__c' => $amount,
             'Telephone_Internet_Comment__c' => htmlspecialchars(Input::get('comments')),
             'Requester_ID__c' => $user->id,
