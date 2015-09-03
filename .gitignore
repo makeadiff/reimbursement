@@ -6,3 +6,7 @@ composer.lock
 .env.php
 .DS_Store
 Thumbs.db
+.idea/
+/app/config/app.php
+/app/config/database.php
+
