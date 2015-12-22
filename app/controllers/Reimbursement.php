@@ -300,7 +300,7 @@ class Reimbursement extends BaseController
             return Redirect::to('success')->with('id',$result[0]->Name)->with('email',$user->email);
 
         } else {
-            return Redirect::to('error')->with('message',print_r($response_r,true));
+            return Redirect::to('error')->with('message',"Error log : <br><pre>" . print_r($sObject->fields,true) . print_r($response_r,true) . "</pre>");
         }
 
 
