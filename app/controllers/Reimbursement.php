@@ -300,7 +300,7 @@ class Reimbursement extends BaseController
             return Redirect::to('success')->with('id',$result[0]->Name)->with('email',$user->email);
 
         } else {
-            return Redirect::to('error')->with('message','Something went wrong. Please try again after sometime.');
+            return Redirect::to('error')->with('message',var_dump($response_r));
         }
 
 
