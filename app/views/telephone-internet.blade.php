@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="form-group col-md-6 col-sm-12">
                             <select id="monthSelect" class="form-control" placeholder="Month" name="monthSelect">
-                                <option selected>September</option>
+                                <option selected>October</option>
                             </select>
                         </div>
 
@@ -51,9 +51,6 @@
                             </select>
                         </div>
                     </div>
-
-
-
             </div>
         </div>
         <div class="row">
