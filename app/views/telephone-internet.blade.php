@@ -41,7 +41,7 @@
                     <div class="row">
                         <div class="form-group col-md-6 col-sm-12">
                             <select id="monthSelect" class="form-control" placeholder="Month" name="monthSelect">
-                                <option selected>February</option>
+                                <option selected>April</option>
                                 <option>March</option>
                             </select>
                         </div>
