@@ -41,7 +41,7 @@ Route::group(array('before'=>'login_check'),function()
     //Route::get('/telephone-internet',array('uses' => 'Reimbursement@showTelephoneInternet')); //Uncomment this line and comment the line below to enable reimbursements
     Route::get('/telephone-internet',array('uses' => 'Reimbursement@showTelephoneInternet', 'before' => 'reimbursement_active')); //Uncomment this line and comment the line above to disable reimbursements
 
-    
+
     Route::get('/', 'Reimbursement@showHome');
     Route::get('/travel','Reimbursement@showTravel');
     Route::get('/success','Reimbursement@showSuccess');
