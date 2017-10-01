@@ -51,5 +51,5 @@ Route::group(array('before'=>'login_check'),function()
     Route::post('/submit/telephone-internet','Reimbursement@submitTelephoneInternet');
     Route::post('/submit/travel','Reimbursement@submitTravel');
     Route::get('/logout','CommonController@logout');
-    Route::get('/admin','CommonController@admin')
+    // Route::get('/admin','CommonController@admin')
 });
