@@ -15,6 +15,7 @@
 Route::filter('login_check',function()
 {
    session_start();
+  //  $_SESSION['user_id'] = 57184;
 
     if(empty($_SESSION['user_id'])){
 
@@ -38,8 +39,8 @@ Route::filter('reimbursement_active',function()
 Route::group(array('before'=>'login_check'),function()
 {
 
-    Route::get('/telephone-internet',array('uses' => 'Reimbursement@showTelephoneInternet')); //Uncomment this line and comment the line below to enable reimbursements
-    // Route::get('/telephone-internet',array('uses' => 'Reimbursement@showTelephoneInternet', 'before' => 'reimbursement_active')); //Uncomment this line and comment the line above to disable reimbursements
+    // Route::get('/telephone-internet',array('uses' => 'Reimbursement@showTelephoneInternet')); //Uncomment this line and comment the line below to enable reimbursements
+    Route::get('/telephone-internet',array('uses' => 'Reimbursement@showTelephoneInternet', 'before' => 'reimbursement_active')); //Uncomment this line and comment the line above to disable reimbursements
 
 
     Route::get('/', 'Reimbursement@showHome');
@@ -50,4 +51,5 @@ Route::group(array('before'=>'login_check'),function()
     Route::post('/submit/telephone-internet','Reimbursement@submitTelephoneInternet');
     Route::post('/submit/travel','Reimbursement@submitTravel');
     Route::get('/logout','CommonController@logout');
+    Route::get('/admin','CommonController@admin')
 });
