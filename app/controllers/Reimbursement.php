@@ -251,6 +251,7 @@ class Reimbursement extends BaseController
 
 
         $sObject = new stdClass();
+        if($user->vertical=="Shelter Operations") $user->vertical = "Center Head";
         $sObject->fields = array(
             'Type__c' => 'Telephone/Internet',
             'Telephone_Internet_Month__c' => Input::get('monthSelect'),
