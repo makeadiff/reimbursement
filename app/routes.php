@@ -15,7 +15,7 @@
 Route::filter('login_check',function()
 {
    session_start();
-  //  $_SESSION['user_id'] = 118697;
+   // $_SESSION['user_id'] = 73672;
 
     if(empty($_SESSION['user_id'])){
 
