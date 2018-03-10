@@ -311,7 +311,6 @@ class Reimbursement extends BaseController
 
     function submitTravel()
     {
-
         $rules = array(
             'reason' => 'required',
             'daily_bhatta' => 'required|numeric|min:1',

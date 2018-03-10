@@ -19,7 +19,7 @@
     <div class="pin">
     <h2 class="sub-title">Travel Reimbursement</h2>
     <br>
-        <form id="travel" role="form" method="post" enctype="multipart/form-data" action={{action('Reimbursement@submitTravel')}}}>
+        <form id="travel" role="form" method="post" enctype="multipart/form-data" action={{action('Reimbursement@submitTravel')}}>
         <div class="row"><div class="col-md-4 col-md-offset-4 col-sm-12">
             @if($errors->count()>0)
 
