@@ -58,7 +58,7 @@
         <div class="row">
             <div class="form-group col-md-4 col-md-offset-4 col-sm-12">
                 <h4 class="sub-title">Amount</h4>
-                <input type="number" class="form-control" name="amount" placeholder="Amount">
+                <input type="number" class="form-control" name="amount"  max="300" placeholder="Reimbursements upto INR 300 could be availed."> 
             </div>
         </div>
         <div class="row">
