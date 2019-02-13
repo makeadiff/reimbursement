@@ -110,13 +110,10 @@ class Reimbursement extends BaseController
             $user = $row_user[0];
             $row_city = DB::connection('makeadiff_madapp')->select('SELECT id, name FROM City WHERE id = ?', array($user->city_id));
             $row_vertical = DB::connection('makeadiff_madapp')->select('SELECT `Group`.type, Vertical.name as vertical_name FROM Vertical
-                                                                            INNER JOIN `Group`
-                                                                            ON `Group`.vertical_id = Vertical.id
-                                                                            INNER JOIN UserGroup
-                                                                            ON UserGroup.group_id = `Group`.id
-                                                                            INNER JOIN `User`
-                                                                            ON `User`.id = UserGroup.user_id
-                                                                            WHERE `User`.id = ? AND Group.type <> ?',array($user->id,'volunteer'));
+                                                                            INNER JOIN `Group` ON `Group`.vertical_id = Vertical.id
+                                                                            INNER JOIN UserGroup ON UserGroup.group_id = `Group`.id
+                                                                            INNER JOIN `User` ON `User`.id = UserGroup.user_id
+                                                                            WHERE `User`.id = ?',array($user->id));
             if(empty($row_vertical[0])) {
                 $data = new stdClass();
                 $data->message = 'You have not been assigned a vertical. Please contact your HR to ensure that your vertical in MADApp has been marked correctly.';
@@ -124,6 +121,7 @@ class Reimbursement extends BaseController
                 return $data;
             }
 
+            $user->vertical = "";
             foreach ($row_vertical as $vertical) {
                 if ($vertical->type == 'national') {
                     $user->vertical = "National";
@@ -132,10 +130,7 @@ class Reimbursement extends BaseController
 
                 if ($vertical->type == 'fellow' || $vertical->type == 'strat') {
                     $user->vertical = $vertical->vertical_name;
-
                 }
-
-
             }
             $user->city_name = $row_city[0]->name;
 
@@ -305,8 +300,6 @@ class Reimbursement extends BaseController
         } else {
             return Redirect::to('error')->with('message',"Error log : <br><pre>" . print_r($sObject->fields,true) . print_r($response_r,true) . "</pre>");
         }
-
-
     }
 
     function submitTravel()
