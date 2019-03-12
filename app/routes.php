@@ -16,11 +16,11 @@ Route::filter('login_check',function()
 {
    session_start();
    // $_SESSION['user_id'] = 57184;
-
+   
     if(empty($_SESSION['user_id'])){
 
         if(App::environment('local'))
-            return Redirect::to('http://localhost/makeadiff.in/home/makeadiff/public_html/madapp/index.php/auth/login/' . base64_encode(Request::url()));
+            return Redirect::to('http://localhost/MAD/madapp/index.php/auth/login/' . base64_encode(Request::url()));
         else
             return Redirect::to('http://makeadiff.in/madapp/index.php/auth/login/' . base64_encode(Request::url()));
 
