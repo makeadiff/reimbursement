@@ -22,17 +22,22 @@
             @endif
 
             <div class="row">
-                <a href='telephone-internet' class='btn btn-primary btn-lg transparent'>Monthly</a>
+                <div class="col-md-6">
+                  <a href='telephone-internet' class='btn btn-primary btn-lg transparent'>Telephonic</a>
+                </div>
+                <div class="col-md-6">
+                  <a href='travel' class='btn btn-primary btn-lg transparent'>Travel</a>
+                </div>
             </div>
-            <br>
-            <div class="row">
+            <!-- <br> -->
+            <!-- <div class="row">
                 <a href='travel' class='btn btn-primary btn-lg transparent'>Travel</a>
             </div>
             <br>
             <br>
             <div class="row">
                 <a href='status' class='btn btn-primary btn-lg transparent'>Status</a>
-            </div>
+            </div> -->
         </div>
     </div>
 @stop
