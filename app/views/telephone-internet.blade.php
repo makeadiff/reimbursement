@@ -56,27 +56,28 @@
         </div>
         <div class="row">
             <div class="form-group col-md-4 col-md-offset-4 col-sm-12">
-                <h4 class="sub-title">Amount</h4>
-                <input type="number" class="form-control" name="amount" />
+              <!-- Update amount to 300 if for one month, and to 600 if for two months -->
+                <p class="text center">Default Monthly Telephonic Reimbursement amount is a fixed INR 600</p>
+                <input type="hidden" class="form-control" name="amount" value="600"/>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="form-group col-md-4 col-md-offset-4 col-sm-12">
                 <h4 class="sub-title">Comments</h4>
                 <textarea class="form-control" name="comments" placeholder="Comments"
                           form="telephone-internet"></textarea>
             </div>
-        </div>
-        <div class="row">
+        </div> -->
+        <!-- <div class="row">
             <div class="form-group col-md-4 col-md-offset-4 col-sm-12">
                 <h4 class="sub-title">Attach Bills</h4>
                 <input class="form-control" type="file" name="bills" form="telephone-internet">
 
             </div>
-        </div>
+        </div> -->
 
 
-        <div class="row">
+        <div class="row center">
             <div class="form-group col-md-4 col-md-offset-4 col-sm-12">
                 <button type="submit" class="btn btn-default">Submit</button>
             </div>

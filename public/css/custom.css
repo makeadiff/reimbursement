@@ -43,6 +43,15 @@ h4.sub-title
 
 }
 
+.center{
+  text-align: center !important;
+}
+
+p.text{
+  color: #FFF;
+  font-size: 16px;
+}
+
 p.success
 {
     font-family: sans-serif;
