@@ -42,7 +42,8 @@
                         <div class="form-group col-md-6 col-sm-12">
                             <select id="monthSelect" class="form-control" placeholder="Month" name="monthSelect">
                                 {{--Use full names of months when putting the options since that's how they are checked in Salesforce--}}
-                                <option selected>August</option>
+                                <!-- <option selected>June & July</option> -->
+                                <option selected>June, July & August</option>
                             </select>
                         </div>
 
@@ -57,8 +58,9 @@
         <div class="row">
             <div class="form-group col-md-4 col-md-offset-4 col-sm-12">
               <!-- Update amount to 300 if for one month, and to 300 if for two months -->
-                <p class="text center">Default Monthly Telephonic Reimbursement amount is a fixed INR 300</p>
-                <input type="hidden" class="form-control" name="amount" value="600"/>
+                <p class="text center"><em>*Note: Fellows who had applied for reimbursements for June and July are requested to apply for the said timeline again, i.e June, July and August so that we can process the reimbursements for the three months together.</em></p>
+                <p class="text center">Default Monthly Telephonic Reimbursement amount is a fixed INR 900</p>
+                <input type="hidden" class="form-control" name="amount" value="900"/>
             </div>
         </div>
         <!-- <div class="row">

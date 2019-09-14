@@ -39,6 +39,9 @@ $(document).ready(function(){
     });
 
 
+    // $("#monthSelect").addEventListener("change",function(){
+    //   alert()
+    // });
 
     /*$("#getButtonValue").click(function () {
 
