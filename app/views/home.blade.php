@@ -22,12 +22,12 @@
             @endif
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <a href='telephone-internet' class='btn btn-primary btn-lg transparent'>Telephonic</a>
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                   <a href='travel' class='btn btn-primary btn-lg transparent'>Travel</a>
-                </div>
+                </div> -->
             </div>
             <!-- <br> -->
             <!-- <div class="row">

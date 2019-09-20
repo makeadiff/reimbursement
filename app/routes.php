@@ -15,7 +15,7 @@
 Route::filter('login_check',function()
 {
    session_start();
-   // $_SESSION['user_id'] = 57184;
+   $_SESSION['user_id'] = 57184;
 
     if(empty($_SESSION['user_id'])){
 
@@ -25,6 +25,8 @@ Route::filter('login_check',function()
             return Redirect::to('http://makeadiff.in/madapp/index.php/auth/login/' . base64_encode(Request::url()));
 
     }
+   // require dirname(__FILE__) . '/../common.php';
+   // accessControl([]);
 
 
 });
