@@ -45,7 +45,8 @@
                                 <!-- <option selected>June & July</option> -->
                                 <!-- <option>December</option> -->
                                 <option>January</option>
-                                <option selected>February</option>
+                                <option>February</option>
+                                <option selected>March</option>
                             </select>
                         </div>
 
