@@ -44,9 +44,9 @@
                                 {{--Use full names of months when putting the options since that's how they are checked in Salesforce--}}
                                 <!-- <option selected>June & July</option> -->
                                 <!-- <option>December</option> -->
-                                <option>January</option>
-                                <option>February</option>
-                                <option selected>March</option>
+                                <option selected>April</option>
+                                {{-- <option>February</option> --}}
+                                {{-- <option selected>March</option> --}}
                             </select>
                         </div>
 
