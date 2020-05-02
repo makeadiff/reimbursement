@@ -11,7 +11,7 @@
 
 @section('navbar-links')
     <li><a href="./telephone-internet">Monthly</a></li>
-    <li><a href="" class="active">Travel</a></li>
+    {{-- <li><a href="" class="active">Travel</a></li> --}}
     <li><a href="./status">Status</a></li>
 @stop
 
