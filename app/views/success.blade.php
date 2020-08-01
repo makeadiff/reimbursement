@@ -19,7 +19,9 @@
         <h1 class="title">Success!</h1>
         <br>
         <div class="row">
-           <p class="success">Successfully added reimbursement request with ID {{Session::get('id')}}. You will receive an email (on {{Session::get('email')}}) on request approval/rejection.</p>
+           <p class="success">Successfully added reimbursement request with ID {{Session::get('id')}}. 
+            {{-- You will receive an email (on {{Session::get('email')}}) on request approval/rejection. --}}
+            </p>
         </div>
         <br>
         <div class="row">
