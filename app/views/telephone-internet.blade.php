@@ -64,8 +64,8 @@
             <div class="form-group col-md-4 col-md-offset-4 col-sm-12">
               <!-- Update amount to 300 if for one month, and to 300 if for two months -->
                 <!-- <p class="text center"><em>*Note: Fellows who had applied for reimbursements for June and July are requested to apply for the said timeline again, i.e June, July and August so that we can process the reimbursements for the three months together.</em></p> -->
-                <p class="text center">Default Monthly Telephonic Reimbursement amount is a fixed INR 300</p>
-                <input type="hidden" class="form-control" name="amount" value="300"/>
+                <p class="text center">Default Monthly Telephonic Reimbursement amount is a fixed INR 400</p>
+                <input type="hidden" class="form-control" name="amount" value="400"/>
             </div>
         </div>
         <!-- <div class="row">
