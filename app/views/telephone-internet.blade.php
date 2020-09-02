@@ -42,11 +42,11 @@
                         <div class="form-group col-md-6 col-sm-12">
                             <select id="monthSelect" class="form-control" placeholder="Month" name="monthSelect">
                                 {{--Use full names of months when putting the options since that's how they are checked in Salesforce--}}
+                                <option selected>August</option>
                                 <!-- <option selected>June & July</option> -->
                                 <!-- <option>December</option> -->
                                 {{-- <option selected>April</option> --}}
-                                <option selected>June</option>
-                                <option>July</option>
+                                {{-- <option selected>June</option> --}}
                                 {{-- <option>February</option> --}}
                                 {{-- <option selected>March</option> --}}
                             </select>
