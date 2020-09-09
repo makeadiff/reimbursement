@@ -7,6 +7,7 @@
     <script src="js/jquery-1.9.0.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/uservoice.js"></script>
+    <title>Reimbursement Portal</title>
     @yield('head')
 </head>
 

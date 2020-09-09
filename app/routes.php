@@ -21,9 +21,9 @@ Route::filter('login_check',function()
     if(empty($_SESSION['user_id'])){
 
         if(App::environment('local'))
-            return Redirect::to('http://localhost/MAD/madapp/index.php/auth/login/' . base64_encode(Request::url()));
+            return Redirect::to('http://localhost/MAD/apps/auth/?redirect_url=' . base64_encode(Request::url()));
         else
-            return Redirect::to('http://makeadiff.in/madapp/index.php/auth/login/' . base64_encode(Request::url()));
+            return Redirect::to('http://makeadiff.in/apps/auth/?redirect_url=' . base64_encode(Request::url()));
 
     }
    // require dirname(__FILE__) . '/../common.php';
