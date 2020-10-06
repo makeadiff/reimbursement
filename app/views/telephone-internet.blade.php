@@ -19,21 +19,15 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4 col-sm-12">
                 @if($errors->count()>0)
-
                     <div class="alert alert-danger alert-dismissable">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-
-
                         @foreach($errors->all() as $message)
-
                             <strong>Error</strong> : {{$message}}
-
                         @endforeach
-
                     </div>
                 @endif
 
-                @if (date("d") > 5)
+                @if (date("d") > 11)
                     <p>The reimbusment portal is closed for the month of {{ date("F", strtotime("-1 month")) }}.</p>
                 @else 
                     <form id="telephone-internet" role="form" method="post" enctype="multipart/form-data"

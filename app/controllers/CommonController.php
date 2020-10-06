@@ -12,9 +12,9 @@ class CommonController extends BaseController
     {
 
         if(App::environment('local')) {
-            return Redirect::to("http://localhost/makeadiff.in/home/makeadiff/public_html/madapp/index.php/auth/logout");
+            return Redirect::to("http://localhost/MAD/apps/auth/logout.php");
         } else {
-            return Redirect::to("http://makeadiff.in/madapp/index.php/auth/logout");
+            return Redirect::to("https://makeadiff.in/apps/auth/logout.php");
         }
 
     }
