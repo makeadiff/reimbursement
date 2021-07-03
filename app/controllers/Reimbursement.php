@@ -137,13 +137,11 @@ class Reimbursement extends BaseController
             $bank_details = $this->getBankDetails();
 
             if($bank_details['error'] == true) {
-
                 $data = new stdClass();
                 $data->error = true;
                 $data->message = $bank_details['message'];
                 return $data;
             }
-
 
             $user->bank_name = $bank_details['bank_name'][0]->data;
             $user->bank_address = $bank_details['bank_address'][0]->data;
@@ -152,12 +150,11 @@ class Reimbursement extends BaseController
             $user->bank_account_type = $bank_details['bank_account_type'][0]->data;
             $user->error = false;
 
-
             return $user;
-        } else {
 
+        } else {
             $data = new stdClass();
-            $data->message = 'Something went wrong. Please try again after sometime. ("Technical" Error : Something is messing with the session data)';
+            $data->message = 'Something went wrong. Please try again after sometime. (Technical Error : Something is messing with the session data. Try logging out and logging in again.)';
             $data->error = true;
             return $data;
         }
@@ -236,14 +233,12 @@ class Reimbursement extends BaseController
 
         foreach ($result as $record) {
             if($record->fields->Requester_ID__c == $user->id && ($record->fields->Status__c == 'Created' || $record->fields->Status__c == 'Approved') &&
-                $record->fields->Type__c == 'Telephone/Internet' && $record->fields->Telephone_Internet_Month__c == Input::get('monthSelect') && $record->fields->Telephone_Internet_Year__c == Input::get('yearSelect')) {
+                $record->fields->Type__c == 'Telephone/Internet' && $record->fields->Telephone_Internet_Month__c == Input::get('monthSelect') && 
+                $record->fields->Telephone_Internet_Year__c == Input::get('yearSelect')) {
 
-                  return Redirect::to('error')->with('message','You have already submitted a telephone/internet reimbursement request for ' . Input::get('monthSelect') . "," . Input::get('yearSelect'));
-
+                return Redirect::to('error')->with('message','You have already submitted a telephone/internet reimbursement request for ' . Input::get('monthSelect') . "," . Input::get('yearSelect'));
             }
         }
-
-
 
         $sObject = new stdClass();
         // if($user->vertical=="Shelter Operations") $user->vertical = "Center Head";
@@ -307,7 +302,6 @@ class Reimbursement extends BaseController
         $rules = array(
             'reason' => 'required',
             'daily_bhatta' => 'required|numeric|min:1',
-
         );
 
         $validator = Validator::make(Input::all(),$rules);
