@@ -18,3 +18,15 @@ The Reimbursement App is a data collection tool built on PHP Laravel Framework, 
 ## Upcoming Features
 
 * Automation of Start/End of Reimbursement Cycle.
+
+## Often Requested Change
+
+### Open/close the portal on a non-standard date.
+
+To do this, open the app/views/telephone-internet.blade.php, go to line 30, change the line from...
+
+```blade
+@if (date("d") > 7)
+```
+
+to what ever the day it should be opened/closed on.
