@@ -27,7 +27,7 @@
                     </div>
                 @endif
 
-                @if (date("d") > 14)
+                @if (date("d") > 7)
                     <p>The reimbusment portal is closed for the month of {{ date("F", strtotime("-1 month")) }}.</p>
                 @else 
                     <form id="telephone-internet" role="form" method="post" enctype="multipart/form-data"
