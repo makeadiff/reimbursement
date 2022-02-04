@@ -45,7 +45,7 @@
 
                             <div class="form-group col-md-6 col-sm-12">
                                 <select id="yearSelect" class="form-control" placeholder="Year" name="yearSelect">
-                                    <option selected>2021</option>
+                                    <option selected>2022</option>
                                 </select>
                             </div>
                         </div>
