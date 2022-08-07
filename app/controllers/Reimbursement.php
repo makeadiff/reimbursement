@@ -8,7 +8,6 @@ class Reimbursement extends BaseController
         ini_set("soap.wsdl_cache_enabled", "0");
         require_once(app_path().'/includes/soapclient/SforcePartnerClient.php');
         require_once(app_path().'/includes/soapclient/SforceHeaderOptions.php');
-        print "Hiy"; exit;
 
         // Salesforce Login information
         $wsdl = app_path().'/includes/soapclient/partner.wsdl.xml';
@@ -18,7 +17,6 @@ class Reimbursement extends BaseController
 
         // Process of logging on and getting a salesforce.com session
         $client = new SforcePartnerClient();
-        print_r($client);exit;
         $client->createConnection($wsdl);
         $loginResult = $client->login($userName, $password);
 
