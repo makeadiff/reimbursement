@@ -12,7 +12,8 @@ class Reimbursement extends BaseController
         // Salesforce Login information
         $wsdl = app_path().'/includes/soapclient/partner.wsdl.xml';
         $userName = "binnyva@makeadiff.in";
-        $password = "Live-pride-13" . "FQOcfhg0hm3fRIMz5USX7qcPQ";
+        // $password = "Live-pride-13" . "FQOcfhg0hm3fRIMz5USX7qcPQ";
+        $password = "Fine-dull-burn-4" . "QwmmI5uHBikSaBYHTOVcwZAa";
 
         // Process of logging on and getting a salesforce.com session
         $client = new SforcePartnerClient();
